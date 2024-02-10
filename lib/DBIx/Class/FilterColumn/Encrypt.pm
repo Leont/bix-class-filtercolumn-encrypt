@@ -6,7 +6,7 @@ use warnings;
 use parent 'DBIx::Class';
 __PACKAGE__->load_components(qw/FilterColumn/);
 
-use Crypt::AuthEnc::GCM;
+use Crypt::AuthEnc::GCM 0.048;
 use Crypt::URandom;
 
 my $format = 'w a16 a16 a*';
