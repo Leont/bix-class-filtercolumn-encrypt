@@ -7,7 +7,7 @@ use parent 'DBIx::Class';
 __PACKAGE__->load_components(qw/FilterColumn/);
 
 use Crypt::AuthEnc::GCM 0.048;
-use Crypt::URandom;
+use Crypt::SysRandom;
 
 my $format = 'w a16 a16 a*';
 
@@ -24,7 +24,7 @@ sub register_column {
 		$column => {
 			filter_to_storage => sub {
 				my (undef, $plaintext) = @_;
-				my $iv = Crypt::URandom::urandom_ub(16);
+				my $iv = Crypt::SysRandom::random_bytes(16);
 				my $encrypter = Crypt::AuthEnc::GCM->new($cipher, $keys{$active}, $iv);
 				my $ciphertext = $encrypter->encrypt_add($plaintext);
 				my $tag = $encrypter->encrypt_done;

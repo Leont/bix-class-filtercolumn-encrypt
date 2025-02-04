@@ -1,6 +1,7 @@
 Revision history for DBIx-Class-FilterColumn-Encrypt
 
 {{$NEXT}}
+          - Use Crypt::SysRandom as source of randomness
 
 0.002     2024-02-10 02:38:41+01:00 Europe/Brussels
           - Add dependency on Crypt::AuthEnc::GCM 0.048
